@@ -5,10 +5,20 @@ def add_item():
         price = input("Enter the price of the item: ")
         
         with open("menu.txt", "a") as file:
-            file.write(f"{item.ljust(20 - len(item))} - ${price}\n")
+            file.write(f"{item.ljust(20)} - ${price}\n")
         
         print(f"{item} has been added to the menu.")
         
         choice = input("Do you want to add more items? (y/n): ").casefold()
         if choice == "n":
             break
+
+def display_menu():
+    
+    print("Menu:\n")
+    
+    with open("menu.txt", "r") as file:
+        for line in file:
+            print(line.strip())
+        
+    print("\n")

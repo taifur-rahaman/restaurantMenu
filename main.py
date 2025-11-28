@@ -4,7 +4,7 @@ import functionalities as func
 print("Welcome to the Restaurant Menu Manangment System!")
 
 while True:
-    print("\nPlease Seletect an Option: \n1. Add Menu Item\n2. Display Menu\n0. Exit")
+    print("\nPlease Seletect an Option: \n1. Add Menu Item\n2. Display Menu\n4. Delete Menu Item\n0. Exit")
     
     choice = input("\nEnter your choice: ")
     
@@ -12,9 +12,9 @@ while True:
         case "1":
             func.add_item()
         case "2":
-            with open("menu.txt", "r") as file:
-                menu = file.read()
-                print(menu)
+            func.display_menu()
+        case "4":
+            pass
         case "0":
             print("Exiting the System. Goodbye!")
             break
