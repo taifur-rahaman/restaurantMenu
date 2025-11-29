@@ -23,7 +23,7 @@ while True:
         case "3":
             func.update_menu(menu_item)
         case "4":
-            pass
+            menu_item = func.delete_item(menu_item)
         case "0":
             print("Exiting the System. Goodbye!")
             break
