@@ -29,27 +29,27 @@ def display_menu():
 def update_menu(menu_item):
     display_menu()
     
-    update_item = input("Enter the item to update: ")
-    new_price = input("Enter the item's new price: ")
+    update_item = input("Enter the item to update: ").strip()
+    new_price = input("Enter the item's new price: ").strip()
     
     menu_item[update_item] = new_price
     
     with open("menu.txt", "w") as file:
         for item, price in menu_item.items():
-            file.write(f"{item.ljust(20)} - ${price}")
+            file.write(f"{item.ljust(20)} - ${price}\n")
     
     print(f"{update_item}'s price has been updated to ${new_price}.")
 
 def delete_item(menu_item):
     display_menu()
     
-    delete_item = input("Which item you want to delete: ")
+    delete_item = input("Which item you want to delete: ").strip()
     
     menu_item.pop(delete_item)
     
     with open("menu.txt", "w") as file:
         for item, price in menu_item.items():
-            file.write(f"{item.ljust(20)} - ${price}")
+            file.write(f"{item.ljust(20)} - ${price}\n")
     
     print(f"{delete_item} has been deleted from the menu.")
     
