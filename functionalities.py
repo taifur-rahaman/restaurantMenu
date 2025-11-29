@@ -1,8 +1,10 @@
-def add_item():
+def add_item(menu_item):
     
     while True:
         item = input("Enter the name of the item to add : ")
         price = input("Enter the price of the item: ")
+        
+        menu_item.update({item: price})
         
         with open("menu.txt", "a") as file:
             file.write(f"{item.ljust(20)} - ${price}\n")
@@ -12,6 +14,7 @@ def add_item():
         choice = input("Do you want to add more items? (y/n): ").casefold()
         if choice == "n":
             break
+    return menu_item
 
 def display_menu():
     
@@ -22,3 +25,17 @@ def display_menu():
             print(line.strip())
         
     print("\n")
+
+def update_menu(menu_item):
+    display_menu()
+    
+    update_item = input("Enter the item to update: ")
+    new_price = input("Enter the item's new price: ")
+    
+    menu_item[update_item] = new_price
+    
+    with open("menu.txt", "w") as file:
+        for item, price in menu_item.items():
+            file.write(f"{item.ljust(20)} - ${price}")
+    
+    print(f"{update_item}'s price has been updated to ${new_price}.")
